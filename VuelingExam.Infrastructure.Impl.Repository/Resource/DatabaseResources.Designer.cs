@@ -68,5 +68,14 @@ namespace VuelingExam.Infrastructure.Impl.Repository.Resource {
                 return ResourceManager.GetString("SelectRates", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM Rates WHERE RateId = @Id;.
+        /// </summary>
+        internal static string SelectRatesById {
+            get {
+                return ResourceManager.GetString("SelectRatesById", resourceCulture);
+            }
+        }
     }
 }

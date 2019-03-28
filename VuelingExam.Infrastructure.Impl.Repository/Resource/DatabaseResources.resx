@@ -120,4 +120,7 @@
   <data name="SelectRates" xml:space="preserve">
     <value>SELECT * FROM Rates;</value>
   </data>
+  <data name="SelectRatesById" xml:space="preserve">
+    <value>SELECT * FROM Rates WHERE RateId = @Id;</value>
+  </data>
 </root>

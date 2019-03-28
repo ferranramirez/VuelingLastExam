@@ -61,7 +61,7 @@ namespace VuelingExam.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM Rates; DELETE FROM Transactions;.
+        ///   Looks up a localized string similar to DELETE FROM Rates; DELETE FROM Transactions;DBCC CHECKIDENT (Rates, RESEED, 0);.
         /// </summary>
         internal static string DeleteTables {
             get {

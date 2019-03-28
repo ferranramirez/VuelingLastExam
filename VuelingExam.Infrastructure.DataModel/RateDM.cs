@@ -6,17 +6,29 @@ namespace VuelingExam.Infrastructure.DataModel
 {
     public class RateDM
     {
-        public RateDM(int rateId, string from, string to, decimal rate)
+        public RateDM(string from, string to, decimal rate)
         {
-            RateId = rateId;
             From = from;
             To = to;
             Rate = rate;
         }
 
-        public int RateId { get; set; }
         public string From { get; set; }
         public string To { get; set; }
         public decimal Rate { get; set; }
+
+        public override bool Equals(object obj)
+        {
+            var dM = obj as RateDM;
+            return dM != null &&
+                   From == dM.From &&
+                   To == dM.To &&
+                   Rate == dM.Rate;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(From, To, Rate);
+        }
     }
 }

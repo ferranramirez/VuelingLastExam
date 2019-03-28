@@ -11,4 +11,19 @@
     <ProjectReference Include="..\VuelingExam.Infrastructure.DataModel\VuelingExam.Infrastructure.DataModel.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resource\DatabaseResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DatabaseResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resource\DatabaseResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DatabaseResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
