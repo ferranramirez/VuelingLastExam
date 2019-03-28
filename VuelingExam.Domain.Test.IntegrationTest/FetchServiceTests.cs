@@ -25,5 +25,12 @@ namespace VuelingExam.Domain.Test.IntegrationTest
             Assert.IsFalse(true);
         }
 
+        [TestMethod]
+        public void FetchTransactionsTest()
+        {
+            fetchService.FetchTransactions();
+            Assert.IsFalse(true);
+        }
+
     }
 }

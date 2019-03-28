@@ -16,6 +16,20 @@ namespace VuelingExam.Domain.Impl.Services
         public List<RateBE> FetchRates()
         {
             List<RateBE> rateList;
+            rateList = HttpRequest<RateBE>(StringResources.RatesUri);
+            return rateList;
+        }
+
+        public List<TransactionBE> FetchTransactions()
+        {
+            List<TransactionBE> transactionList;
+            transactionList = HttpRequest<TransactionBE>(StringResources.TransactionsUri);
+            return transactionList;
+        }
+
+        private static List<T> HttpRequest<T>(string FileUri)
+        {
+            List<T> resultList;
             using (var httpClient = new HttpClient())
             {
                 httpClient.BaseAddress = new Uri(StringResources.UriApi);
@@ -23,17 +37,13 @@ namespace VuelingExam.Domain.Impl.Services
                 httpClient.DefaultRequestHeaders.Accept.Add(
                     new MediaTypeWithQualityHeaderValue("application/json"));
 
-                HttpResponseMessage httpResponse = httpClient.GetAsync(StringResources.RatesUri).Result;
+                HttpResponseMessage httpResponse = httpClient.GetAsync(FileUri).Result;
                 string result = httpResponse.Content.ReadAsStringAsync().Result;
-                
-                rateList = JsonConvert.DeserializeObject<List<RateBE>>(result.ToString());
-            }
-            return rateList;
-        }
 
-        public List<TransactionBE> FetchTransaction()
-        {
-            throw new NotImplementedException();
+                resultList = JsonConvert.DeserializeObject<List<T>>(result.ToString());
+            }
+
+            return resultList;
         }
     }
 }

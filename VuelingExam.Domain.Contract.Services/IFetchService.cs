@@ -10,6 +10,6 @@ namespace VuelingExam.Domain.Contract.Services
 
         List<RateBE> FetchRates();
 
-        List<TransactionBE> FetchTransaction();
+        List<TransactionBE> FetchTransactions();
     }
 }

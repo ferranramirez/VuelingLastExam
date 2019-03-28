@@ -70,6 +70,15 @@ namespace VuelingExam.Domain.Impl.Services.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to transactions.json.
+        /// </summary>
+        internal static string TransactionsUri {
+            get {
+                return ResourceManager.GetString("TransactionsUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to http://quiet-stone-2094.herokuapp.com/.
         /// </summary>
         internal static string UriApi {

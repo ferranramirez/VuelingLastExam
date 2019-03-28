@@ -120,6 +120,9 @@
   <data name="RatesUri" xml:space="preserve">
     <value>rates.json</value>
   </data>
+  <data name="TransactionsUri" xml:space="preserve">
+    <value>transactions.json</value>
+  </data>
   <data name="UriApi" xml:space="preserve">
     <value>http://quiet-stone-2094.herokuapp.com/</value>
   </data>
