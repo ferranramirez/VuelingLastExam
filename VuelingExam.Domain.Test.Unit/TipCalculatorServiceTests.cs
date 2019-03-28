@@ -43,7 +43,7 @@ namespace VuelingExam.Domain.Test.Unit
             {
                 tipBE
             };
-            billBE = new BillBE(8.70m, "USD", tipList);
+            billBE = new BillBE(0.50m, "USD", tipList);
         }
         
         [DataTestMethod]
@@ -75,13 +75,13 @@ namespace VuelingExam.Domain.Test.Unit
             using (var mock = AutoMock.GetLoose())
             {
                 mock.Mock<ITipCalculatorService>().Setup(x =>
-                    x.GetTransactionAmount(transactionBE, "USD")).Returns(8.7m);
+                    x.GetTransactionAmount(transactionBE, "USD")).Returns(0.50m);
                 var sut = mock.Create<ITipCalculatorService>();
 
                 var actual = sut.GetTransactionAmount(transactionBE, "USD");
                 mock.Mock<ITipCalculatorService>().Verify(x =>
                     x.GetTransactionAmount(transactionBE, "USD"));
-                Assert.AreEqual(8.7m, actual);
+                Assert.AreEqual(0.50m, actual);
             }
         }
 

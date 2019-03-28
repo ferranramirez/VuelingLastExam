@@ -105,22 +105,25 @@ namespace VuelingExam.Domain.Impl.Services
         public BillBE GetBill(List<RateBE> rateList, List<TransactionBE> transactionList, string currency)
         {
             BillBE result = null;
-            decimal finalAmount = 0;
+            decimal rateValue = 0;
+            decimal finalTipAmount = 0;
             List<TipBE> tipList = new List<TipBE>();
             try
             {
                 for(int i = 0; i < transactionList.Count; i++)
                 {
-                    finalAmount += GetTransactionAmount(transactionList[0], currency);
+                    rateValue = Math.Round(GetTransactionAmount(transactionList[0], currency), 2);
 
                     decimal tipAmount = Math.Round(transactionList[0].Amount*0.05m, 2);
 
                     TipBE tip = new TipBE(transactionList[0].Sku, transactionList[0].Amount,
                         tipAmount, transactionList[0].Currency);
 
+                    finalTipAmount += Math.Round(tipAmount * rateValue, 2);
+
                     tipList.Add(tip);
                 }
-                result = new BillBE(finalAmount, currency, tipList);
+                result = new BillBE(Math.Round(finalTipAmount, 2), currency, tipList);
             }
             #region Exceptions
             catch (ArgumentOutOfRangeException e)
@@ -141,11 +144,10 @@ namespace VuelingExam.Domain.Impl.Services
 
         public decimal GetTransactionAmount(TransactionBE transaction, string currency)
         {
-            decimal finalAmount = 0;
+            decimal rateValue = 0;
             try
             {
-                decimal rateValue = RecursiveDFS(transaction.Currency, currency);
-                finalAmount = transaction.Amount * rateValue;
+                rateValue = RecursiveDFS(transaction.Currency, currency);
             }
             #region Exceptions
             catch (ArgumentOutOfRangeException e)
@@ -161,7 +163,7 @@ namespace VuelingExam.Domain.Impl.Services
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion
-            return finalAmount;
+            return rateValue;
         }
 
         public void GenerateGraph(List<RateBE> rateList)

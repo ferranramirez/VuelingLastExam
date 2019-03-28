@@ -42,7 +42,7 @@ namespace VuelingExam.Domain.Test.Integration
             {
                 tipBE
             };
-            billBE = new BillBE(8.70m, "USD", tipList);
+            billBE = new BillBE(0.44m, "USD", tipList);
         }
         
         [DataTestMethod]
@@ -63,7 +63,7 @@ namespace VuelingExam.Domain.Test.Integration
         public void GetTransactionAmountTest()
         {
             decimal actual = tipCalculatorService.GetTransactionAmount(transactionBE, "USD");
-            Assert.AreEqual(8.7m, actual);
+            Assert.AreEqual(0.87m, actual);
         }
 
         [TestMethod]
