@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Text;
 using VuelingExam.Common.Logic.Helpers;
 using VuelingExam.Infrastructure.Contracts.Repository;
 using VuelingExam.Infrastructure.DataModel;
+using VuelingExam.Infrastructure.Impl.Repository.Exceptions;
 using VuelingExam.Infrastructure.Impl.Repository.Resource;
 
 namespace VuelingExam.Infrastructure.Impl.Repository
@@ -16,77 +18,228 @@ namespace VuelingExam.Infrastructure.Impl.Repository
         public List<TransactionDM> ReadAll()
         {
             List<TransactionDM> result = new List<TransactionDM>();
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                string queryString = DatabaseResources.SelectTransactions;
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    string queryString = DatabaseResources.SelectTransactions;
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
                     {
-                        while (reader.Read())
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            string sku = reader["Sku"].ToString();
-                            decimal amount = Decimal.Parse(reader["Amount"].ToString());
-                            string currency = reader["Currency"].ToString();
-                            TransactionDM model = new TransactionDM(sku, amount, currency);
-                            result.Add(model);
+                            while (reader.Read())
+                            {
+                                string sku = reader["Sku"].ToString();
+                                decimal amount = Decimal.Parse(reader["Amount"].ToString());
+                                string currency = reader["Currency"].ToString();
+                                TransactionDM model = new TransactionDM(sku, amount, currency);
+                                result.Add(model);
+                            }
                         }
                     }
                 }
             }
+            #region Exceptions
+            catch (InvalidCastException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (IOException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ObjectDisposedException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (SqlException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (FormatException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (OverflowException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            #endregion
             return result;
         }
         public List<TransactionDM> CreateAll(List<TransactionDM> modelList)
         {
-            for (int i = 0; i < modelList.Count; i++)
+            List<TransactionDM> result;
+            try
             {
-                Create(modelList[i]);
+                for (int i = 0; i < modelList.Count; i++)
+                {
+                    Create(modelList[i]);
+                }
+                result = ReadAll();
             }
-            return ReadAll();
+            #region Exceptions
+            catch (InvalidCastException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (IOException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ObjectDisposedException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (SqlException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (FormatException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (OverflowException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            #endregion
+            return result;
         }
         public TransactionDM Create(TransactionDM model)
         {
+            TransactionDM result;
             string id;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                string queryString = DatabaseResources.InsertTransaction;
-
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@Sku", model.Sku);
-                    command.Parameters.AddWithValue("@Amount", model.Amount);
-                    command.Parameters.AddWithValue("@Currency", model.Currency);
-                    command.ExecuteNonQuery();
-                    id = model.Sku;
-                }
-            }
-            return ReadBySku(id);
-        }
+                    connection.Open();
+                    string queryString = DatabaseResources.InsertTransaction;
 
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
+                    {
+                        command.Parameters.AddWithValue("@Sku", model.Sku);
+                        command.Parameters.AddWithValue("@Amount", model.Amount);
+                        command.Parameters.AddWithValue("@Currency", model.Currency);
+                        command.ExecuteNonQuery();
+                        id = model.Sku;
+                    }
+                }
+                result = ReadBySku(id);
+            }
+            #region Exceptions
+            catch (InvalidCastException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (IOException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ObjectDisposedException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (SqlException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (FormatException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (OverflowException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            #endregion
+            return result;
+        }
         public TransactionDM ReadBySku(string id)
         {
             TransactionDM result = null;
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                connection.Open();
-                string queryString = DatabaseResources.SelectTransactionsBySku;
-                using (SqlCommand command = new SqlCommand(queryString, connection))
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    command.Parameters.AddWithValue("@Sku", id);
-                    using (SqlDataReader reader = command.ExecuteReader())
+                    connection.Open();
+                    string queryString = DatabaseResources.SelectTransactionsBySku;
+                    using (SqlCommand command = new SqlCommand(queryString, connection))
                     {
-                        if (reader.Read())
+                        command.Parameters.AddWithValue("@Sku", id);
+                        using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            string sku = reader["Sku"].ToString();
-                            decimal amount = Decimal.Parse(reader["Amount"].ToString());
-                            string currency = reader["Currency"].ToString();
-                            result = new TransactionDM(sku, amount, currency);
+                            if (reader.Read())
+                            {
+                                string sku = reader["Sku"].ToString();
+                                decimal amount = Decimal.Parse(reader["Amount"].ToString());
+                                string currency = reader["Currency"].ToString();
+                                result = new TransactionDM(sku, amount, currency);
+                            }
                         }
                     }
                 }
             }
+            #region Exceptions
+            catch (InvalidCastException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (IOException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ObjectDisposedException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (InvalidOperationException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (SqlException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (FormatException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            catch (OverflowException e)
+            {
+                throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
+            }
+            #endregion
             return result;
         }
     }
