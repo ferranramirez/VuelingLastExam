@@ -22,10 +22,20 @@ namespace VuelingExam.Facade.Impl.Api
             var container = AutofacConfigure.Configure(services);
             return new AutofacServiceProvider(container);
         }
+
+        private static void AddFilter(Microsoft.AspNetCore.Mvc.MvcOptions config)
+        {
+            config.Filters.Add(new CustomExceptionFilterAttribute());
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            services.AddMvc(
+                config =>
+                {
+                    AddFilter(config);
+                });
 
             return AutofacService(services);
         }
