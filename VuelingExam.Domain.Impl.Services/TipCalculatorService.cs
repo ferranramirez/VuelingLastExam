@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using VuelingExam.Domain.BusinessEntities;
+using VuelingExam.Domain.Contract.Services;
 
 namespace VuelingExam.Domain.Impl.Services
 {
-    public class TipCalculatorService
+    public class TipCalculatorService : ITipCalculatorService
     {
         public TipCalculatorService()
         {

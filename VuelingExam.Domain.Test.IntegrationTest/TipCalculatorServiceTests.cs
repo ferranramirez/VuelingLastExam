@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using VuelingExam.Domain.BusinessEntities;
 using VuelingExam.Domain.Impl.Services;
 
-namespace VuelingExam.Domain.Test.IntegrationTest
+namespace VuelingExam.Domain.Test.Integration
 {
     [TestClass]
     public class TipCalculatorServiceTests
@@ -50,6 +50,5 @@ namespace VuelingExam.Domain.Test.IntegrationTest
             decimal actual = tipCalculatorService.GetTip(rateList, transactionBE, "USD");
             Assert.AreEqual(8.7m, actual);
         }
-
     }
 }
