@@ -11,13 +11,12 @@ namespace VuelingExam.Infrastructure.Test.Unit
     public class RateRepositoryTests
     {
         RateRepository rateRepository;
-        List<RateDM> rateDMList, createdRateDMList;
+        List<RateDM> rateDMList;
 
         [TestInitialize]
         public void SetUp()
         {
             rateRepository = new RateRepository();
-            createdRateDMList = new List<RateDM>();
             rateDMList = new List<RateDM>
             {
                 new RateDM("RBR", "YEN", 15.55m),
