@@ -38,15 +38,36 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             }
             return result;
         }
-
+        public List<RateDM> CreateAll(List<RateDM> modelList)
+        {
+            DataTable data = ConfigHelper.ToDataTable(modelList);
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlBulkCopy bulkCopy =
+                           new SqlBulkCopy(connectionString))
+                {
+                    bulkCopy.DestinationTableName =
+                        "dbo.Person";
+                    try
+                    {
+                        bulkCopy.WriteToServer(data);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+            return ReadAll();
+        }
         public RateDM Create(RateDM model)
         {
             int id;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string queryString = "INSERT INTO Rates VALUES(@From, @To, @Rate);" +
-                    "SELECT CAST(SCOPE_IDENTITY() AS INT);";
+                string queryString = DatabaseResources.InsertRate;
 
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
@@ -58,8 +79,7 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             }
             return ReadById(id);
         }
-
-        private RateDM ReadById(int id)
+        public RateDM ReadById(int id)
         {
             RateDM result = null;
             using (SqlConnection connection = new SqlConnection(connectionString))

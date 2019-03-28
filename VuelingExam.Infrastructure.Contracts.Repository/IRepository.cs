@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VuelingExam.Infrastructure.Contracts.Repository
+﻿namespace VuelingExam.Infrastructure.Contracts.Repository
 {
-    public interface IRepository<T> : IReadAll<T>
+    public interface IRepository<T> : IRead<T>, ICreate<T>
     {
     }
 }

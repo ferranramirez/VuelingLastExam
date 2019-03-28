@@ -2,8 +2,9 @@
 
 namespace VuelingExam.Infrastructure.Contracts.Repository
 {
-    public interface IReadAll<T>
+    public interface ICreate<T>
     {
-        List<T> ReadAll();
+        List<T> CreateAll(List<T> modelList);
+        T Create(T model);
     }
 }

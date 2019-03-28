@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="InsertRate" xml:space="preserve">
+    <value>INSERT INTO Rates VALUES(@From, @To, @Rate); SELECT CAST(SCOPE_IDENTITY() AS INT);</value>
+  </data>
+  <data name="InsertTransaction" xml:space="preserve">
+    <value>INSERT INTO Transactions VALUES(@Sku, @Amount, @Currency);</value>
+  </data>
   <data name="SelectRates" xml:space="preserve">
     <value>SELECT * FROM Rates;</value>
   </data>
   <data name="SelectRatesById" xml:space="preserve">
     <value>SELECT * FROM Rates WHERE RateId = @Id;</value>
+  </data>
+  <data name="SelectTransactions" xml:space="preserve">
+    <value>SELECT * FROM Transactions;</value>
+  </data>
+  <data name="SelectTransactionsBySku" xml:space="preserve">
+    <value>SELECT * FROM Transactions WHERE Sku = @Id;</value>
   </data>
 </root>

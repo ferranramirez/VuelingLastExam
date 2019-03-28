@@ -44,5 +44,12 @@ namespace VuelingExam.Infrastructure.Test.Integration
         {
             CollectionAssert.AreEqual(rateDMList, createdRateDMList);
         }
+
+        [TestMethod]
+        public void BulkCreateAllTest()
+        {
+            var actual = rateRepository.CreateAll(rateDMList);
+            CollectionAssert.AreEqual(rateDMList, createdRateDMList);
+        }
     }
 }
