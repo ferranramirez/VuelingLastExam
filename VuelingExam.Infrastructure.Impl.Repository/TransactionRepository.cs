@@ -180,9 +180,9 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             #endregion
             return result;
         }
-        public TransactionDM ReadBySku(string id)
+        public List<TransactionDM> ReadBySku(string id)
         {
-            TransactionDM result = null;
+            List<TransactionDM> result = new List<TransactionDM>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -194,12 +194,13 @@ namespace VuelingExam.Infrastructure.Impl.Repository
                         command.Parameters.AddWithValue("@Sku", id);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
-                            if (reader.Read())
+                            while (reader.Read())
                             {
                                 string sku = reader["Sku"].ToString();
                                 decimal amount = Decimal.Parse(reader["Amount"].ToString());
                                 string currency = reader["Currency"].ToString();
-                                result = new TransactionDM(sku, amount, currency);
+                                TransactionDM model = new TransactionDM(sku, amount, currency);
+                                result.Add(model);
                             }
                         }
                     }

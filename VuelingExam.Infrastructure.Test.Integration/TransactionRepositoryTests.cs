@@ -12,7 +12,8 @@ namespace VuelingExam.Infrastructure.Test.Integration
     public class TransactionRepositoryTests : IoCSupportedTest<InfrastructureModule>
     {
         ITransactionRepository transactionRepository;
-        List<TransactionDM> transactionDMList, createdTransactionDMList;
+        List<TransactionDM> transactionDMList, createdTransactionDMList, sameSkuTransactionDMList;
+        TransactionDM transactionDM0, transactionDM1;
 
         [TestInitialize]
         public void SetUp()
@@ -21,9 +22,19 @@ namespace VuelingExam.Infrastructure.Test.Integration
             transactionRepository = Resolve<ITransactionRepository>();
 
             createdTransactionDMList = new List<TransactionDM>();
+            transactionDM0 = new TransactionDM("T001", 12.34m, "EUR");
+            transactionDM1 = new TransactionDM("T001", 15.23m, "USD");
+
+            sameSkuTransactionDMList = new List<TransactionDM>
+            {
+                transactionDM0,
+                transactionDM1
+            };
+
             transactionDMList = new List<TransactionDM>
             {
-                new TransactionDM("T001", 12.34m, "EUR"),
+                transactionDM0,
+                transactionDM1,
                 new TransactionDM("T002", 15.54m, "EUR"),
                 new TransactionDM("T003", 2.04m, "DOL")
             };
@@ -41,6 +52,13 @@ namespace VuelingExam.Infrastructure.Test.Integration
         public void CreateTest()
         {
             CollectionAssert.AreEqual(transactionDMList, createdTransactionDMList);
+        }
+
+        [TestMethod]
+        public void ReadBySkuTest()
+        {
+            var actual = transactionRepository.ReadBySku("T001");
+            CollectionAssert.AreEqual(sameSkuTransactionDMList, actual);
         }
     }
 }

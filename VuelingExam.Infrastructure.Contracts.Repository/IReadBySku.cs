@@ -1,7 +1,9 @@
-﻿namespace VuelingExam.Infrastructure.Contracts.Repository
+﻿using System.Collections.Generic;
+
+namespace VuelingExam.Infrastructure.Contracts.Repository
 {
-    public interface IReadBySku<out T>
+    public interface IReadBySku<T>
     {
-        T ReadBySku(string id);
+        List<T> ReadBySku(string id);
     }
 }

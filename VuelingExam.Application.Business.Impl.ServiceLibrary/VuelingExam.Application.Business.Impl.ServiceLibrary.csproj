@@ -28,6 +28,7 @@
     <ProjectReference Include="..\VuelingExam.Domain.Impl.Services\VuelingExam.Domain.Impl.Services.csproj" />
     <ProjectReference Include="..\VuelingExam.Infrastructure.Contracts.Repository\VuelingExam.Infrastructure.Contracts.Repository.csproj" />
     <ProjectReference Include="..\VuelingExam.Infrastructure.DataModel\VuelingExam.Infrastructure.DataModel.csproj" />
+    <ProjectReference Include="..\VuelingExam.Infrastructure.Impl.Repository\VuelingExam.Infrastructure.Impl.Repository.csproj" />
   </ItemGroup>
 
 </Project>
