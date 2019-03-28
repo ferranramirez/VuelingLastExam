@@ -2,9 +2,8 @@
 
 namespace VuelingExam.Infrastructure.Contracts.Repository
 {
-    public interface IRead<T>
+    public interface IReadAll<T>
     {
         List<T> ReadAll();
-        T ReadById(int id);
     }
 }

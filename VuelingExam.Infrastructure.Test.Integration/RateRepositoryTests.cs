@@ -24,12 +24,7 @@ namespace VuelingExam.Infrastructure.Test.Integration
                 new RateDM("EUR", "PES", 23.32m),
                 new RateDM("DOL", "COL", 0.25m)
             };
-
-            for(int i = 0; i < rateDMList.Count; i++)
-            {
-                RateDM created = rateRepository.Create(rateDMList[i]);
-                createdRateDMList.Add(created);
-            }
+            createdRateDMList = rateRepository.CreateAll(rateDMList);
         }
 
         [TestMethod]
@@ -42,13 +37,6 @@ namespace VuelingExam.Infrastructure.Test.Integration
         [TestMethod]
         public void CreateTest()
         {
-            CollectionAssert.AreEqual(rateDMList, createdRateDMList);
-        }
-
-        [TestMethod]
-        public void BulkCreateAllTest()
-        {
-            var actual = rateRepository.CreateAll(rateDMList);
             CollectionAssert.AreEqual(rateDMList, createdRateDMList);
         }
     }

@@ -106,7 +106,7 @@ namespace VuelingExam.Infrastructure.Impl.Repository.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT * FROM Transactions WHERE Sku = @Id;.
+        ///   Looks up a localized string similar to SELECT * FROM Transactions WHERE Sku = &apos;@Sku&apos;;.
         /// </summary>
         internal static string SelectTransactionsBySku {
             get {

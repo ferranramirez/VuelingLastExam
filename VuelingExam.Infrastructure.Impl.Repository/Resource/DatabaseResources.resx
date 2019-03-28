@@ -133,6 +133,6 @@
     <value>SELECT * FROM Transactions;</value>
   </data>
   <data name="SelectTransactionsBySku" xml:space="preserve">
-    <value>SELECT * FROM Transactions WHERE Sku = @Id;</value>
+    <value>SELECT * FROM Transactions WHERE Sku = '@Sku';</value>
   </data>
 </root>

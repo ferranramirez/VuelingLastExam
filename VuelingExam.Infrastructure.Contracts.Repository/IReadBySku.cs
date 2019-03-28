@@ -1,6 +1,7 @@
 ﻿namespace VuelingExam.Infrastructure.Contracts.Repository
 {
-    public interface IRepository<T> : IRead<T>, ICreate<T>
+    public interface IReadBySku<out T>
     {
+        T ReadBySku(string id);
     }
 }

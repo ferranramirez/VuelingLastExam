@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Text;
 using VuelingExam.Common.Logic.Helpers;
 using VuelingExam.Infrastructure.Contracts.Repository;
 using VuelingExam.Infrastructure.DataModel;
@@ -9,28 +9,27 @@ using VuelingExam.Infrastructure.Impl.Repository.Resource;
 
 namespace VuelingExam.Infrastructure.Impl.Repository
 {
-    public class RateRepository : IRateRepository
+    public class TransactionRepository : ITransactionRepository
     {
         private readonly string connectionString = ConfigHelper.AppSettings["ConnectionString"];
 
-        public List<RateDM> ReadAll()
+        public List<TransactionDM> ReadAll()
         {
-            List<RateDM> result = new List<RateDM>();
+            List<TransactionDM> result = new List<TransactionDM>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string queryString = DatabaseResources.SelectRates;
+                string queryString = DatabaseResources.SelectTransactions;
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var row = (IDataRecord)reader;
-                            string from = row["from"].ToString();
-                            string to = row["to"].ToString();
-                            decimal rate = Decimal.Parse(row["rate"].ToString());
-                            RateDM model = new RateDM(from, to, rate);
+                            string sku = reader["Sku"].ToString();
+                            decimal amount = Decimal.Parse(reader["Amount"].ToString());
+                            string currency = reader["Currency"].ToString();
+                            TransactionDM model = new TransactionDM(sku, amount, currency);
                             result.Add(model);
                         }
                     }
@@ -38,7 +37,7 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             }
             return result;
         }
-        public List<RateDM> CreateAll(List<RateDM> modelList)
+        public List<TransactionDM> CreateAll(List<TransactionDM> modelList)
         {
             for (int i = 0; i < modelList.Count; i++)
             {
@@ -46,42 +45,44 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             }
             return ReadAll();
         }
-        public RateDM Create(RateDM model)
+        public TransactionDM Create(TransactionDM model)
         {
-            int id;
+            string id;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string queryString = DatabaseResources.InsertRate;
+                string queryString = DatabaseResources.InsertTransaction;
 
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    command.Parameters.AddWithValue("@From", model.From);
-                    command.Parameters.AddWithValue("@To", model.To);
-                    command.Parameters.AddWithValue("@Rate", model.Rate);
-                    id = (int)command.ExecuteScalar();
+                    command.Parameters.AddWithValue("@Sku", model.Sku);
+                    command.Parameters.AddWithValue("@Amount", model.Amount);
+                    command.Parameters.AddWithValue("@Currency", model.Currency);
+                    command.ExecuteNonQuery();
+                    id = model.Sku;
                 }
             }
-            return ReadById(id);
+            return ReadBySku(id);
         }
-        public RateDM ReadById(int id)
+
+        public TransactionDM ReadBySku(string id)
         {
-            RateDM result = null;
+            TransactionDM result = null;
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
-                string queryString = DatabaseResources.SelectRatesById;
+                string queryString = DatabaseResources.SelectTransactionsBySku;
                 using (SqlCommand command = new SqlCommand(queryString, connection))
                 {
-                    command.Parameters.AddWithValue("@Id", id);
+                    command.Parameters.AddWithValue("@Sku", id);
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.Read())
                         {
-                            string from = reader["From"].ToString();
-                            string to = reader["To"].ToString();
-                            decimal rate = Decimal.Parse(reader["Rate"].ToString());
-                            result = new RateDM(from, to, rate);
+                            string sku = reader["Sku"].ToString();
+                            decimal amount = Decimal.Parse(reader["Amount"].ToString());
+                            string currency = reader["Currency"].ToString();
+                            result = new TransactionDM(sku, amount, currency);
                         }
                     }
                 }
