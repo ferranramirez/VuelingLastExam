@@ -1,22 +1,25 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using VuelingExam.Common.Logic.Helpers;
+using VuelingExam.Infrastructure.Contracts.Repository;
 using VuelingExam.Infrastructure.DataModel;
 using VuelingExam.Infrastructure.Impl.Repository;
+using VuelingExam.Infrastructure.Test.Integration.Modules;
 
 namespace VuelingExam.Infrastructure.Test.Integration
 {
     [TestClass]
-    public class TransactionRepositoryTests
+    public class TransactionRepositoryTests : IoCSupportedTest<InfrastructureModule>
     {
-        TransactionRepository transactionRepository;
+        ITransactionRepository transactionRepository;
         List<TransactionDM> transactionDMList, createdTransactionDMList;
 
         [TestInitialize]
         public void SetUp()
         {
             ConfigHelper.CleanDatabase();
-            transactionRepository = new TransactionRepository();
+            transactionRepository = Resolve<ITransactionRepository>();
+
             createdTransactionDMList = new List<TransactionDM>();
             transactionDMList = new List<TransactionDM>
             {

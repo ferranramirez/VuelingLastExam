@@ -1,22 +1,23 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using VuelingExam.Common.Logic.Helpers;
+using VuelingExam.Infrastructure.Contracts.Repository;
 using VuelingExam.Infrastructure.DataModel;
-using VuelingExam.Infrastructure.Impl.Repository;
+using VuelingExam.Infrastructure.Test.Integration.Modules;
 
 namespace VuelingExam.Infrastructure.Test.Integration
 {
     [TestClass]
-    public class RateRepositoryTests
+    public class RateRepositoryTests : IoCSupportedTest<InfrastructureModule>
     {
-        RateRepository rateRepository;
+        IRateRepository rateRepository;
         List<RateDM> rateDMList, createdRateDMList;
 
         [TestInitialize]
         public void SetUp()
         {
             ConfigHelper.CleanDatabase();
-            rateRepository = new RateRepository();
+            rateRepository = Resolve<IRateRepository>();
             createdRateDMList = new List<RateDM>();
             rateDMList = new List<RateDM>
             {
