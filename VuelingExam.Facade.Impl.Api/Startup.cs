@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using VuelingExam.Facade.Impl.Api.App_start;
+using VuelingExam.Facade.Impl.Api.Filters;
 
 namespace VuelingExam.Facade.Impl.Api
 {
@@ -37,6 +38,7 @@ namespace VuelingExam.Facade.Impl.Api
                     AddFilter(config);
                 });
 
+            SwaggerConfigure.Configure(services);
             return AutofacService(services);
         }
 
@@ -55,6 +57,12 @@ namespace VuelingExam.Facade.Impl.Api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "VuelingLastExam");
+            });
         }
     }
 }
