@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VuelingExam.Common.Logic.Resources {
+namespace VuelingExam.Infrastructure.Impl.Repository.Resource {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace VuelingExam.Common.Logic.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VuelingExam.Common.Logic.Resources.DatabaseResources", typeof(DatabaseResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VuelingExam.Infrastructure.Impl.Repository.Resource.DatabaseResources", typeof(DatabaseResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,11 @@ namespace VuelingExam.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM Rates; DELETE FROM Transactions;.
+        ///   Looks up a localized string similar to SELECT * FROM Rates;.
         /// </summary>
-        internal static string DeleteTables {
+        internal static string SelectRates {
             get {
-                return ResourceManager.GetString("DeleteTables", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to DBCC CHECKIDENT (Rates, RESEED, 0);.
-        /// </summary>
-        internal static string ReseedRates {
-            get {
-                return ResourceManager.GetString("ReseedRates", resourceCulture);
+                return ResourceManager.GetString("SelectRates", resourceCulture);
             }
         }
     }
