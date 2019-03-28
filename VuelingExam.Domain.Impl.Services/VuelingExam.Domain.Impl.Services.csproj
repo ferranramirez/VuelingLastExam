@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="Autofac.WebApi2" Version="4.2.1" />
+    <PackageReference Include="AutofacSerilogIntegration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Serilog.Formatting.Compact" Version="1.0.0" />
+    <PackageReference Include="Serilog.Formatting.Compact.Reader" Version="1.0.3" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VuelingExam.Common.Logic\VuelingExam.Common.Logic.csproj" />
+    <ProjectReference Include="..\VuelingExam.Common.Mapper\VuelingExam.Common.Mapper.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.Contract.Services\VuelingExam.Domain.Contract.Services.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.4.0" />
+    <PackageReference Include="Autofac.WebApi2" Version="4.2.1" />
+    <PackageReference Include="AutofacSerilogIntegration" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VuelingExam.Application.DTO\VuelingExam.Application.DTO.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj" />
+  </ItemGroup>
+
+</Project>
