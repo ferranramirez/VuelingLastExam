@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using VuelingExam.Application.Business.Impl.ServiceLibrary.Exceptions;
+using VuelingExam.Application.DTO;
 using VuelingExam.Common.Mapper;
 using VuelingExam.Domain.BusinessEntities;
 using VuelingExam.Domain.Contract.Services;
@@ -26,9 +27,9 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
             Mapper = mapper;
         }
 
-        public void GetTipConversion(string sku, string currency)
+        public BillDTO GetTipConversion(string sku, string currency)
         {
-            //BillDTO result;
+            BillDTO result = null;
             
             try
             {
@@ -39,7 +40,8 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
                 List<TransactionBE> transactionsBusiness = Mapper.MapList<TransactionDM,
                     TransactionBE>(readTransactions);
 
-                
+                BillBE billCalculated = TipCalculatorService.GetBill(ratesBusiness, transactionsBusiness, currency);
+                result = Mapper.Map<BillBE, BillDTO>(billCalculated);
             }
             #region Exceptions
             catch (VuelingExamDomainException e)
@@ -51,7 +53,7 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             #endregion
-            //return result;
+            return result;
         }
     }
 }
