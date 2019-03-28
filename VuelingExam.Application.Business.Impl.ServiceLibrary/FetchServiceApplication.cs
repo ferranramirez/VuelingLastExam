@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Serilog;
+using System.Collections.Generic;
 using VuelingExam.Application.Business.Contract.ServiceLibrary;
 using VuelingExam.Application.Business.Impl.ServiceLibrary.Exceptions;
 using VuelingExam.Common.Mapper;
@@ -17,14 +18,16 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
         IRateRepository RateRepository;
         ITransactionRepository TransactionRepository;
         Mapper Mapper;
+        ILogger Log;
         public FetchServiceApplication(IFetchService fetchService,
             IRateRepository rateRepository, ITransactionRepository transactionRepository,
-            Mapper mapper)
+            Mapper mapper, ILogger logger)
         {
             FetchService = fetchService;
             RateRepository = rateRepository;
             TransactionRepository = transactionRepository;
             Mapper = mapper;
+            Log = logger;
         }
 
         public bool FetchAndStore()
@@ -46,10 +49,14 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
             #region Exceptions
             catch (VuelingExamDomainException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             catch (VuelingExamInfrastructureException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             #endregion

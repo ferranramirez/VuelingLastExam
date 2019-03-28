@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Serilog;
+using System.Collections.Generic;
 using VuelingExam.Application.Business.Contract.ServiceLibrary;
 using VuelingExam.Application.Business.Impl.ServiceLibrary.Exceptions;
 using VuelingExam.Application.DTO;
@@ -18,9 +19,10 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
         ITransactionRepository TransactionRepository;
         IRateRepository RateRepository;
         Mapper Mapper;
+        ILogger Logger;
         public TipCalculatorServiceApplication(ITipCalculatorService tipCalculatorService,
             ITransactionRepository transactionRepository, IRateRepository rateRepository,
-            Mapper mapper)
+            Mapper mapper, ILogger logger)
         {
             TipCalculatorService = tipCalculatorService;
             TransactionRepository = transactionRepository;
@@ -47,10 +49,14 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
             #region Exceptions
             catch (VuelingExamDomainException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             catch (VuelingExamInfrastructureException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             #endregion

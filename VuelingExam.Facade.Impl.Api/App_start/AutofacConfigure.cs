@@ -14,6 +14,7 @@ namespace VuelingExam.Facade.Impl.Api.App_start
             builder.RegisterModule<ApiDomainModule>();
             builder.RegisterModule<ApiRepositoryModule>();
             builder.RegisterModule<MapperModule>();
+            builder.RegisterModule<LoggerApiModule>();
 
             builder.Populate(services);
             var container = builder.Build();

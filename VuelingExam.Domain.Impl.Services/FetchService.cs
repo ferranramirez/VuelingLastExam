@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -12,6 +13,13 @@ namespace VuelingExam.Domain.Impl.Services
 {
     public class FetchService : IFetchService
     {
+        ILogger Log;
+
+        public FetchService(ILogger logger)
+        {
+            Log = logger;
+        }
+
         public List<RateBE> FetchRates()
         {
             List<RateBE> rateList;
@@ -22,10 +30,14 @@ namespace VuelingExam.Domain.Impl.Services
             #region Exceptions
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (HttpRequestException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion
@@ -42,10 +54,14 @@ namespace VuelingExam.Domain.Impl.Services
             #region Exceptions
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (HttpRequestException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion

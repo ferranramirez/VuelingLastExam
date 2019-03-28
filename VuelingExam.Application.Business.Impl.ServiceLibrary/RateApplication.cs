@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Serilog;
+using System.Collections.Generic;
 using VuelingExam.Application.Business.Contract.ServiceLibrary;
 using VuelingExam.Application.Business.Impl.ServiceLibrary.Exceptions;
 using VuelingExam.Application.DTO;
@@ -13,10 +14,12 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
     {
         IRateRepository RateRepository;
         Mapper Mapper;
-        public RateApplication(IRateRepository rateRepository, Mapper mapper)
+        ILogger Log;
+        public RateApplication(IRateRepository rateRepository, Mapper mapper, ILogger logger)
         {
             RateRepository = rateRepository;
             Mapper = mapper;
+            Log = logger;
         }
 
         public List<RateDTO> GetAll()
@@ -30,6 +33,8 @@ namespace VuelingExam.Application.Business.Impl.ServiceLibrary
             #region Exceptions
             catch (VuelingExamInfrastructureException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamApplicationException(e.Message, e.InnerException);
             }
             #endregion

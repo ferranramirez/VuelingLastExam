@@ -16,7 +16,7 @@ namespace VuelingExam.Infrastructure.Test.Unit
         [TestInitialize]
         public void SetUp()
         {
-            transactionRepository = new TransactionRepository();
+            transactionRepository = new TransactionRepository(null);
             transactionDMList = new List<TransactionDM>
             {
                 new TransactionDM("T001", 12.34m, "EUR"),

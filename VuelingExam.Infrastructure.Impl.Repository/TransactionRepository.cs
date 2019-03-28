@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
@@ -14,6 +15,12 @@ namespace VuelingExam.Infrastructure.Impl.Repository
     public class TransactionRepository : ITransactionRepository
     {
         private readonly string connectionString = ConfigHelper.AppSettings["ConnectionString"];
+        ILogger Log;
+
+        public TransactionRepository(ILogger logger)
+        {
+            Log = logger;
+        }
 
         public List<TransactionDM> ReadAll()
         {
@@ -43,34 +50,50 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             #region Exceptions
             catch (InvalidCastException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (IOException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ObjectDisposedException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (InvalidOperationException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (SqlException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (FormatException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             #endregion
@@ -90,34 +113,50 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             #region Exceptions
             catch (InvalidCastException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (IOException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ObjectDisposedException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (InvalidOperationException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (SqlException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (FormatException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             #endregion
@@ -209,34 +248,50 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             #region Exceptions
             catch (InvalidCastException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (IOException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ObjectDisposedException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (InvalidOperationException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (SqlException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (FormatException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             #endregion
@@ -271,34 +326,50 @@ namespace VuelingExam.Infrastructure.Impl.Repository
             #region Exceptions
             catch (InvalidCastException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (IOException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ObjectDisposedException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (InvalidOperationException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (SqlException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (FormatException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamInfrastructureException(e.Message, e.InnerException);
             }
             #endregion

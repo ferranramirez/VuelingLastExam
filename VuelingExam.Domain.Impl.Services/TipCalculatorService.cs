@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using VuelingExam.Domain.BusinessEntities;
@@ -10,9 +11,11 @@ namespace VuelingExam.Domain.Impl.Services
 {
     public class TipCalculatorService : ITipCalculatorService
     {
-        public TipCalculatorService()
+        ILogger Log;
+        public TipCalculatorService(ILogger logger)
         {
             Adj = new Dictionary<string, HashSet<Pair>>();
+            Log = logger;
         }
 
         public Dictionary<string, HashSet<Pair>> Adj { get; private set; }
@@ -51,14 +54,20 @@ namespace VuelingExam.Domain.Impl.Services
             #region Exceptions
             catch (ArgumentOutOfRangeException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion
@@ -128,14 +137,20 @@ namespace VuelingExam.Domain.Impl.Services
             #region Exceptions
             catch (ArgumentOutOfRangeException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion
@@ -152,14 +167,20 @@ namespace VuelingExam.Domain.Impl.Services
             #region Exceptions
             catch (ArgumentOutOfRangeException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (OverflowException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             catch (ArgumentNullException e)
             {
+                Log.Error(e.Message);
+                Log.Warning(e.StackTrace);
                 throw new VuelingExamDomainException(e.Message, e.InnerException);
             }
             #endregion
