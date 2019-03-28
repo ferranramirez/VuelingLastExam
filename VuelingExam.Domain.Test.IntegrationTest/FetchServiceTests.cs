@@ -1,24 +1,23 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using VuelingExam.Domain.BusinessEntities;
-using VuelingExam.Domain.Impl.Services;
+using VuelingExam.Domain.Contract.Services;
+using VuelingExam.Domain.Test.Integration.Modules;
 
 namespace VuelingExam.Domain.Test.Integration
 {
 
     [TestClass]
-    public class FetchServiceTests
+    public class FetchServiceTests : IoCSupportedTest<DomainModule>
     {
-        FetchService fetchService;
+        IFetchService fetchService;
         List<RateBE> fetchedRates;
         List<TransactionBE> fetchedTransactions;
 
         [TestInitialize]
         public void SetUp()
         {
-            fetchService = new FetchService();
+            fetchService = Resolve<IFetchService>();
             fetchedRates = new List<RateBE>();
             fetchedTransactions = new List<TransactionBE>();
         }

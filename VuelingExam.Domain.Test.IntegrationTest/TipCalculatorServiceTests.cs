@@ -2,21 +2,22 @@
 using System;
 using System.Collections.Generic;
 using VuelingExam.Domain.BusinessEntities;
-using VuelingExam.Domain.Impl.Services;
+using VuelingExam.Domain.Contract.Services;
+using VuelingExam.Domain.Test.Integration.Modules;
 
 namespace VuelingExam.Domain.Test.Integration
 {
     [TestClass]
-    public class TipCalculatorServiceTests
+    public class TipCalculatorServiceTests : IoCSupportedTest<DomainModule>
     {
-        TipCalculatorService tipCalculatorService;
+        ITipCalculatorService tipCalculatorService;
         List<RateBE> rateList;
         TransactionBE transactionBE;
 
         [TestInitialize]
         public void SetUp()
         {
-            tipCalculatorService = new TipCalculatorService();
+            tipCalculatorService = Resolve<ITipCalculatorService>();
             rateList = new List<RateBE>
             {
                 new RateBE("EUR", "USD", 0.87m),
