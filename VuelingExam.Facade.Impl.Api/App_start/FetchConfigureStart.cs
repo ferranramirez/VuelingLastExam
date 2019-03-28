@@ -10,7 +10,6 @@ namespace VuelingExam.Facade.Impl.Api.App_start
         public FetchConfigureStart(IFetchServiceApplication fetchServiceApplication)
         {
             FetchServiceApplication = fetchServiceApplication;
-            Start();
         }
         public void Start()
         {

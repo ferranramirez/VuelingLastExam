@@ -2,6 +2,7 @@
 
 API Rest that provides some methods to manage some Transactions and Currency Rates.
 
+- Everything works!
 
 ## Structure
 This project follows the DDD structure that's why the code it's divided in 4 tiers.
