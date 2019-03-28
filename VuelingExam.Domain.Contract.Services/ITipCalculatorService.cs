@@ -7,7 +7,8 @@ namespace VuelingExam.Domain.Contract.Services
     {
         decimal RecursiveDFS(string start, string end);
 
-        decimal GetTip(List<RateBE> rateList, TransactionBE transaction, string currency);
+        BillBE GetBill(List<RateBE> rateList, List<TransactionBE> transactionList, string currency);
+        decimal GetTransactionAmount(TransactionBE transaction, string currency);
 
         void GenerateGraph(List<RateBE> rateList);
     }

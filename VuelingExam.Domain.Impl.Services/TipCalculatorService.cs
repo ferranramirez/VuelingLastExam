@@ -102,12 +102,49 @@ namespace VuelingExam.Domain.Impl.Services
             return resultRate;
         }
 
-        public decimal GetTip(List<RateBE> rateList, TransactionBE transaction, string currency)
+        public BillBE GetBill(List<RateBE> rateList, List<TransactionBE> transactionList, string currency)
         {
-            decimal rateValue, finalAmount;
+            BillBE result = null;
+            decimal finalAmount = 0;
+            List<TipBE> tipList = new List<TipBE>();
             try
             {
-                rateValue = RecursiveDFS(transaction.Currency, currency);
+                for(int i = 0; i < transactionList.Count; i++)
+                {
+                    finalAmount += GetTransactionAmount(transactionList[0], currency);
+
+                    decimal tipAmount = Math.Round(transactionList[0].Amount*0.05m, 2);
+
+                    TipBE tip = new TipBE(transactionList[0].Sku, transactionList[0].Amount,
+                        tipAmount, transactionList[0].Currency);
+
+                    tipList.Add(tip);
+                }
+                result = new BillBE(finalAmount, currency, tipList);
+            }
+            #region Exceptions
+            catch (ArgumentOutOfRangeException e)
+            {
+                throw new VuelingExamDomainException(e.Message, e.InnerException);
+            }
+            catch (OverflowException e)
+            {
+                throw new VuelingExamDomainException(e.Message, e.InnerException);
+            }
+            catch (ArgumentNullException e)
+            {
+                throw new VuelingExamDomainException(e.Message, e.InnerException);
+            }
+            #endregion
+            return result;
+        }
+
+        public decimal GetTransactionAmount(TransactionBE transaction, string currency)
+        {
+            decimal finalAmount = 0;
+            try
+            {
+                decimal rateValue = RecursiveDFS(transaction.Currency, currency);
                 finalAmount = transaction.Amount * rateValue;
             }
             #region Exceptions

@@ -13,7 +13,10 @@ namespace VuelingExam.Domain.Test.Unit
     {
         TipCalculatorService tipCalculatorService;
         List<RateBE> rateList;
+        List<TransactionBE> transactionList;
         TransactionBE transactionBE;
+        BillBE billBE;
+        TipBE tipBE;
 
         [TestInitialize]
         public void SetUp()
@@ -30,6 +33,17 @@ namespace VuelingExam.Domain.Test.Unit
             };
             tipCalculatorService.GenerateGraph(rateList);
             transactionBE = new TransactionBE("T001", 10, "EUR");
+
+            transactionList = new List<TransactionBE>
+            {
+                transactionBE
+            };
+            tipBE = new TipBE("T001", 10, 0.50m, "EUR");
+            List<TipBE> tipList = new List<TipBE>
+            {
+                tipBE
+            };
+            billBE = new BillBE(8.70m, "USD", tipList);
         }
         
         [DataTestMethod]
@@ -56,18 +70,34 @@ namespace VuelingExam.Domain.Test.Unit
         }
 
         [TestMethod]
-        public void GetTipTest()
+        public void GetTransactionAmountTest()
         {
             using (var mock = AutoMock.GetLoose())
             {
                 mock.Mock<ITipCalculatorService>().Setup(x =>
-                    x.GetTip(rateList, transactionBE, "USD")).Returns(8.7m);
+                    x.GetTransactionAmount(transactionBE, "USD")).Returns(8.7m);
                 var sut = mock.Create<ITipCalculatorService>();
 
-                var actual = sut.GetTip(rateList, transactionBE, "USD");
+                var actual = sut.GetTransactionAmount(transactionBE, "USD");
                 mock.Mock<ITipCalculatorService>().Verify(x =>
-                    x.GetTip(rateList, transactionBE, "USD"));
+                    x.GetTransactionAmount(transactionBE, "USD"));
                 Assert.AreEqual(8.7m, actual);
+            }
+        }
+
+        [TestMethod]
+        public void GetBillTest()
+        {
+            using (var mock = AutoMock.GetLoose())
+            {
+                mock.Mock<ITipCalculatorService>().Setup(x =>
+                    x.GetBill(rateList, transactionList, "USD")).Returns(billBE);
+                var sut = mock.Create<ITipCalculatorService>();
+
+                var actual = sut.GetBill(rateList, transactionList, "USD");
+                mock.Mock<ITipCalculatorService>().Verify(x =>
+                    x.GetBill(rateList, transactionList, "USD"));
+                Assert.AreEqual(billBE, actual);
             }
         }
     }

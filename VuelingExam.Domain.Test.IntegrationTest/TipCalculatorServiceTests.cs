@@ -12,7 +12,10 @@ namespace VuelingExam.Domain.Test.Integration
     {
         ITipCalculatorService tipCalculatorService;
         List<RateBE> rateList;
+        List<TransactionBE> transactionList;
         TransactionBE transactionBE;
+        BillBE billBE;
+        TipBE tipBE;
 
         [TestInitialize]
         public void SetUp()
@@ -29,6 +32,17 @@ namespace VuelingExam.Domain.Test.Integration
             };
             tipCalculatorService.GenerateGraph(rateList);
             transactionBE = new TransactionBE("T001", 10, "EUR");
+
+            transactionList = new List<TransactionBE>
+            {
+                transactionBE
+            };
+            tipBE = new TipBE("T001", 10, 0.50m, "EUR");
+            List<TipBE> tipList = new List<TipBE>
+            {
+                tipBE
+            };
+            billBE = new BillBE(8.70m, "USD", tipList);
         }
         
         [DataTestMethod]
@@ -44,12 +58,20 @@ namespace VuelingExam.Domain.Test.Integration
             decimal actual = tipCalculatorService.RecursiveDFS(from, to);
             Assert.AreEqual(Decimal.Parse(rate), actual);
         }
-        
+
         [TestMethod]
-        public void GetTipTest()
+        public void GetTransactionAmountTest()
         {
-            decimal actual = tipCalculatorService.GetTip(rateList, transactionBE, "USD");
+            decimal actual = tipCalculatorService.GetTransactionAmount(transactionBE, "USD");
             Assert.AreEqual(8.7m, actual);
+        }
+
+        [TestMethod]
+        public void GetBillTest()
+        {
+            BillBE actual = tipCalculatorService.GetBill(rateList,
+                transactionList, "USD");
+            Assert.AreEqual(billBE, actual);
         }
     }
 }
