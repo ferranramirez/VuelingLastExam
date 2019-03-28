@@ -121,13 +121,16 @@
     <value>INSERT INTO Rates VALUES(@From, @To, @Rate); SELECT CAST(SCOPE_IDENTITY() AS INT);</value>
   </data>
   <data name="InsertTransaction" xml:space="preserve">
-    <value>INSERT INTO Transactions VALUES(@Sku, @Amount, @Currency);</value>
+    <value>INSERT INTO Transactions VALUES(@Sku, @Amount, @Currency); SELECT CAST(SCOPE_IDENTITY() AS INT);</value>
   </data>
   <data name="SelectRates" xml:space="preserve">
     <value>SELECT * FROM Rates;</value>
   </data>
   <data name="SelectRatesById" xml:space="preserve">
     <value>SELECT * FROM Rates WHERE RateId = @Id;</value>
+  </data>
+  <data name="SelectTransactionById" xml:space="preserve">
+    <value>SELECT * FROM Transactions WHERE TransactionId = @TransactionId;</value>
   </data>
   <data name="SelectTransactions" xml:space="preserve">
     <value>SELECT * FROM Transactions;</value>

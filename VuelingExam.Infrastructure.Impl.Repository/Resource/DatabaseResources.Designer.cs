@@ -70,7 +70,7 @@ namespace VuelingExam.Infrastructure.Impl.Repository.Resource {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO Transactions VALUES(@Sku, @Amount, @Currency);.
+        ///   Looks up a localized string similar to INSERT INTO Transactions VALUES(@Sku, @Amount, @Currency); SELECT CAST(SCOPE_IDENTITY() AS INT);.
         /// </summary>
         internal static string InsertTransaction {
             get {
@@ -93,6 +93,15 @@ namespace VuelingExam.Infrastructure.Impl.Repository.Resource {
         internal static string SelectRatesById {
             get {
                 return ResourceManager.GetString("SelectRatesById", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM Transactions WHERE TransactionId = @TransactionId;.
+        /// </summary>
+        internal static string SelectTransactionById {
+            get {
+                return ResourceManager.GetString("SelectTransactionById", resourceCulture);
             }
         }
         
