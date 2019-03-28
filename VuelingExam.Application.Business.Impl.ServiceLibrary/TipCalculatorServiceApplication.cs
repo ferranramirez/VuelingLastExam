@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using VuelingExam.Application.Business.Contract.ServiceLibrary;
 using VuelingExam.Application.Business.Impl.ServiceLibrary.Exceptions;
 using VuelingExam.Application.DTO;
 using VuelingExam.Common.Mapper;
@@ -11,7 +12,7 @@ using VuelingExam.Infrastructure.Impl.Repository.Exceptions;
 
 namespace VuelingExam.Application.Business.Impl.ServiceLibrary
 {
-    public class TipCalculatorServiceApplication
+    public class TipCalculatorServiceApplication : ITipCalculatorServiceApplication
     {
         ITipCalculatorService TipCalculatorService;
         ITransactionRepository TransactionRepository;

@@ -114,10 +114,10 @@ namespace VuelingExam.Domain.Impl.Services
                 {
                     rateValue = Math.Round(GetTransactionAmount(transactionList[0], currency), 2);
 
-                    decimal tipAmount = Math.Round(transactionList[0].Amount*0.05m, 2);
+                    decimal tipAmount = Math.Round(transactionList[i].Amount*0.05m, 2);
 
-                    TipBE tip = new TipBE(transactionList[0].Sku, transactionList[0].Amount,
-                        tipAmount, transactionList[0].Currency);
+                    TipBE tip = new TipBE(transactionList[i].Sku, transactionList[i].Amount,
+                        tipAmount, transactionList[i].Currency);
 
                     finalTipAmount += Math.Round(tipAmount * rateValue, 2);
 

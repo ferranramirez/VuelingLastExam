@@ -28,4 +28,21 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="4.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VuelingExam.Application.Business.Contract.ServiceLibrary\VuelingExam.Application.Business.Contract.ServiceLibrary.csproj" />
+    <ProjectReference Include="..\VuelingExam.Application.Business.Impl.ServiceLibrary\VuelingExam.Application.Business.Impl.ServiceLibrary.csproj" />
+    <ProjectReference Include="..\VuelingExam.Application.DTO\VuelingExam.Application.DTO.csproj" />
+    <ProjectReference Include="..\VuelingExam.Common.Logic\VuelingExam.Common.Logic.csproj" />
+    <ProjectReference Include="..\VuelingExam.Common.Mapper\VuelingExam.Common.Mapper.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.Contract.Services\VuelingExam.Domain.Contract.Services.csproj" />
+    <ProjectReference Include="..\VuelingExam.Domain.Impl.Services\VuelingExam.Domain.Impl.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 </Project>

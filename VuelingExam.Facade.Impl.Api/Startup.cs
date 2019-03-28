@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System;
+using VuelingExam.Facade.Impl.Api.App_start;
 
 namespace VuelingExam.Facade.Impl.Api
 {
@@ -21,11 +17,17 @@ namespace VuelingExam.Facade.Impl.Api
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+                private static IServiceProvider AutofacService(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var container = AutofacConfigure.Configure(services);
+            return new AutofacServiceProvider(container);
+        }
+        // This method gets called by the runtime. Use this method to add services to the container.
+        public IServiceProvider ConfigureServices(IServiceCollection services)
+        {
+            services.AddMvc();
+
+            return AutofacService(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
