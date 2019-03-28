@@ -18,25 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VuelingExam.Common.Logic\VuelingExam.Common.Logic.csproj" />
-    <ProjectReference Include="..\VuelingExam.Common.Mapper\VuelingExam.Common.Mapper.csproj" />
-    <ProjectReference Include="..\VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj" />
-    <ProjectReference Include="..\VuelingExam.Domain.Contract.Services\VuelingExam.Domain.Contract.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Resources\StringResources.Designer.cs">
-      <DependentUpon>StringResources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Resources\StringResources.resx">
-      <LastGenOutput>StringResources.Designer.cs</LastGenOutput>
-      <Generator>ResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
+    <ProjectReference Include="..\VuelingExam.Infrastructure.DataModel\VuelingExam.Infrastructure.DataModel.csproj" />
   </ItemGroup>
 
 </Project>

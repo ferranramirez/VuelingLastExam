@@ -7,41 +7,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1_DistributedServices", "1_
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2_Application", "2_Application", "{5710082E-EDCC-4AD2-94C5-11C33EAA13EF}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_DomainModel", "3_DomainModel", "{86639591-6121-4CCF-9A14-BF256323990F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3_Domain", "3_Domain", "{86639591-6121-4CCF-9A14-BF256323990F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4_Infrastructure", "4_Infrastructure", "{56750A7E-8E1B-45F7-8579-14245BB9F287}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5_Common", "5_Common", "{9D047AF4-EAAC-4CB8-A861-90DD5DA38749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Common.Logic", "VuelingExam.Common.Logic\VuelingExam.Common.Logic.csproj", "{4822330F-4CFF-4930-A425-37D0CF51DBD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Common.Logic", "VuelingExam.Common.Logic\VuelingExam.Common.Logic.csproj", "{4822330F-4CFF-4930-A425-37D0CF51DBD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Common.Mapper", "VuelingExam.Common.Mapper\VuelingExam.Common.Mapper.csproj", "{C8D6476A-80FE-4D9B-96B7-8E1FEFD27473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Common.Mapper", "VuelingExam.Common.Mapper\VuelingExam.Common.Mapper.csproj", "{C8D6476A-80FE-4D9B-96B7-8E1FEFD27473}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Infrastructure.Contracts.Repository", "VuelingExam.Infrastructure.Contracts.Repository\VuelingExam.Infrastructure.Contracts.Repository.csproj", "{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Infrastructure.Contracts.Repository", "VuelingExam.Infrastructure.Contracts.Repository\VuelingExam.Infrastructure.Contracts.Repository.csproj", "{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Infrastructure.Impl.Repository", "VuelingExam.Infrastructure.Impl.Repository\VuelingExam.Infrastructure.Impl.Repository.csproj", "{300B6838-154A-4D58-8FC1-EDFDF906DE67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Infrastructure.DataModel", "VuelingExam.Infrastructure.DataModel\VuelingExam.Infrastructure.DataModel.csproj", "{BEFEEC77-9062-4323-90D4-4970F95E1439}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Infrastructure.DataModel", "VuelingExam.Infrastructure.DataModel\VuelingExam.Infrastructure.DataModel.csproj", "{BEFEEC77-9062-4323-90D4-4970F95E1439}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Domain.BusinessEntities", "VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj", "{2841AE06-DEAA-4710-A98F-12D260C37A89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Domain.BusinessEntities", "VuelingExam.Domain.BusinessEntities\VuelingExam.Domain.BusinessEntities.csproj", "{2841AE06-DEAA-4710-A98F-12D260C37A89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Domain.Contract.Services", "VuelingExam.Domain.Contract.Services\VuelingExam.Domain.Contract.Services.csproj", "{2AEDDE4D-1431-4704-8F26-6676F05293CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Domain.Contract.Services", "VuelingExam.Domain.Contract.Services\VuelingExam.Domain.Contract.Services.csproj", "{2AEDDE4D-1431-4704-8F26-6676F05293CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Domain.Impl.Services", "VuelingExam.Domain.Impl.Services\VuelingExam.Domain.Impl.Services.csproj", "{68E27FA3-BB67-40BD-A3A9-82A757CB0DA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Domain.Impl.Services", "VuelingExam.Domain.Impl.Services\VuelingExam.Domain.Impl.Services.csproj", "{68E27FA3-BB67-40BD-A3A9-82A757CB0DA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Application.DTO", "VuelingExam.Application.DTO\VuelingExam.Application.DTO.csproj", "{57B93326-9C76-45E4-80E6-CDCF4EF202AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Application.DTO", "VuelingExam.Application.DTO\VuelingExam.Application.DTO.csproj", "{57B93326-9C76-45E4-80E6-CDCF4EF202AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Application.Business.Impl.ServiceLibrary", "VuelingExam.Application.Business.Impl.ServiceLibrary\VuelingExam.Application.Business.Impl.ServiceLibrary.csproj", "{370DBA77-93DA-47A7-B38C-8F55D211441D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Application.Business.Impl.ServiceLibrary", "VuelingExam.Application.Business.Impl.ServiceLibrary\VuelingExam.Application.Business.Impl.ServiceLibrary.csproj", "{370DBA77-93DA-47A7-B38C-8F55D211441D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Application.Business.Contract.ServiceLibrary", "VuelingExam.Application.Business.Contract.ServiceLibrary\VuelingExam.Application.Business.Contract.ServiceLibrary.csproj", "{36421A77-87C6-4915-9029-67D07DC7646D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Application.Business.Contract.ServiceLibrary", "VuelingExam.Application.Business.Contract.ServiceLibrary\VuelingExam.Application.Business.Contract.ServiceLibrary.csproj", "{36421A77-87C6-4915-9029-67D07DC7646D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Facade.Impl.Api", "VuelingExam.Facade.Impl.Api\VuelingExam.Facade.Impl.Api.csproj", "{5F1D0B3E-F92F-467C-87BA-267893D3BED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VuelingExam.Facade.Impl.Api", "VuelingExam.Facade.Impl.Api\VuelingExam.Facade.Impl.Api.csproj", "{5F1D0B3E-F92F-467C-87BA-267893D3BED3}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{056EA38A-FB92-4980-AE05-97B89F8E6295}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain.Test", "Domain.Test", "{056EA38A-FB92-4980-AE05-97B89F8E6295}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{0E235B98-151F-4177-A532-E8414863CAF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{22646DA7-19BB-43AC-BDD1-23B644892B88}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VuelingExam.Domain.Test.IntegrationTest", "VuelingExam.Domain.Test.IntegrationTest\VuelingExam.Domain.Test.IntegrationTest.csproj", "{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,10 +61,6 @@ Global
 		{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{300B6838-154A-4D58-8FC1-EDFDF906DE67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{300B6838-154A-4D58-8FC1-EDFDF906DE67}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{300B6838-154A-4D58-8FC1-EDFDF906DE67}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{300B6838-154A-4D58-8FC1-EDFDF906DE67}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BEFEEC77-9062-4323-90D4-4970F95E1439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BEFEEC77-9062-4323-90D4-4970F95E1439}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BEFEEC77-9062-4323-90D4-4970F95E1439}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -97,6 +93,10 @@ Global
 		{5F1D0B3E-F92F-467C-87BA-267893D3BED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F1D0B3E-F92F-467C-87BA-267893D3BED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F1D0B3E-F92F-467C-87BA-267893D3BED3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -105,7 +105,6 @@ Global
 		{4822330F-4CFF-4930-A425-37D0CF51DBD1} = {9D047AF4-EAAC-4CB8-A861-90DD5DA38749}
 		{C8D6476A-80FE-4D9B-96B7-8E1FEFD27473} = {9D047AF4-EAAC-4CB8-A861-90DD5DA38749}
 		{07DDAE5B-2890-4EBC-BAA3-8B2646C9C8F6} = {56750A7E-8E1B-45F7-8579-14245BB9F287}
-		{300B6838-154A-4D58-8FC1-EDFDF906DE67} = {56750A7E-8E1B-45F7-8579-14245BB9F287}
 		{BEFEEC77-9062-4323-90D4-4970F95E1439} = {56750A7E-8E1B-45F7-8579-14245BB9F287}
 		{2841AE06-DEAA-4710-A98F-12D260C37A89} = {86639591-6121-4CCF-9A14-BF256323990F}
 		{2AEDDE4D-1431-4704-8F26-6676F05293CE} = {86639591-6121-4CCF-9A14-BF256323990F}
@@ -117,6 +116,7 @@ Global
 		{056EA38A-FB92-4980-AE05-97B89F8E6295} = {86639591-6121-4CCF-9A14-BF256323990F}
 		{0E235B98-151F-4177-A532-E8414863CAF7} = {56750A7E-8E1B-45F7-8579-14245BB9F287}
 		{22646DA7-19BB-43AC-BDD1-23B644892B88} = {5710082E-EDCC-4AD2-94C5-11C33EAA13EF}
+		{C0E29F3A-F4E1-4552-942A-9BAAFE05A5F8} = {056EA38A-FB92-4980-AE05-97B89F8E6295}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2E407C2D-03B3-468A-B58F-36963F9A50F8}

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VuelingExam.Common.Logic.Resources {
+namespace VuelingExam.Domain.Impl.Services.Resources {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace VuelingExam.Common.Logic.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class DatabaseResources {
+    internal class StringResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal DatabaseResources() {
+        internal StringResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace VuelingExam.Common.Logic.Resources {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VuelingExam.Common.Logic.Resources.DatabaseResources", typeof(DatabaseResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VuelingExam.Domain.Impl.Services.Resources.StringResources", typeof(StringResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,11 +61,20 @@ namespace VuelingExam.Common.Logic.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM Rate; DELETE FROM Transaction;.
+        ///   Looks up a localized string similar to rates.json.
         /// </summary>
-        internal static string DeleteTables {
+        internal static string RatesUri {
             get {
-                return ResourceManager.GetString("DeleteTables", resourceCulture);
+                return ResourceManager.GetString("RatesUri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to http://quiet-stone-2094.herokuapp.com/.
+        /// </summary>
+        internal static string UriApi {
+            get {
+                return ResourceManager.GetString("UriApi", resourceCulture);
             }
         }
     }
