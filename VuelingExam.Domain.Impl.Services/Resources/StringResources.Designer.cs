@@ -61,6 +61,15 @@ namespace VuelingExam.Domain.Impl.Services.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This edge already exists.
+        /// </summary>
+        internal static string EdgeExistsException {
+            get {
+                return ResourceManager.GetString("EdgeExistsException", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to rates.json.
         /// </summary>
         internal static string RatesUri {
