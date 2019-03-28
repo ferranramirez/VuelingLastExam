@@ -10,11 +10,13 @@ namespace VuelingExam.Common.Mapper
             IMapper mapper = MapCreator<T, U>();
             return mapper.Map<T, U>(origin);
         }
+
         public List<U> MapList<T, U>(List<T> origin)
         {
             IMapper mapper = MapCreator<T, U>();
             return mapper.Map<List<T>, List<U>>(origin);
         }
+
         public Dictionary<V, List<W>> MapDictionary<T, U, V, W>(
             Dictionary<T, List<U>> origin)
         {
